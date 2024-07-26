@@ -1,0 +1,11 @@
+def find_runner_up(n, scores):
+    unique_scores = set(scores)
+    sorted_scores = sorted(unique_scores)
+    return sorted_scores[-2]
+if __name__ == "__main__":
+    import sys
+    input = sys.stdin.read().strip().split()
+    n = int(input[0])
+    scores = list(map(int, input[1:]))
+    runner_up = find_runner_up(n, scores)
+    print(runner_up)
