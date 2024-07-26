@@ -1,0 +1,21 @@
+def find_second_lowest_grade_students(n, data):
+    students = []
+    for i in range(n):
+        name = data[2*i]
+        grade = float(data[2*i + 1])
+        students.append([name, grade])
+    unique_grades = sorted(set(student[1] for student in students))
+    if len(unique_grades) < 2:
+        return []  # If there are less than 2 unique grades, return an empty list
+    second_lowest_grade = unique_grades[1]
+    second_lowest_students = [student[0] for student in students if student[1] == second_lowest_grade]
+    second_lowest_students.sort()
+    return second_lowest_students
+if __name__ == "__main__":
+    import sys
+    input = sys.stdin.read().strip().split('\n')
+    n = int(input[0])
+    data = input[1:]
+    result = find_second_lowest_grade_students(n, data)
+    for name in result:
+        print(name)
